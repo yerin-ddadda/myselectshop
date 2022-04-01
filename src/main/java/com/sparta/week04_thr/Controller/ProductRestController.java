@@ -2,8 +2,11 @@ package com.sparta.week04_thr.Controller;
 
 import com.sparta.week04_thr.models.Product;
 import com.sparta.week04_thr.models.ProductRepository;
+import com.sparta.week04_thr.models.ProductRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -17,5 +20,11 @@ public class ProductRestController {
     @GetMapping("/api/products")
     public List<Product> readProducts(){
         return productRepository.findAll();
+    }
+
+    @PostMapping("/api/products")
+    public Product createProducts(@RequestBody ProductRequestDto requestDto){
+        Product product = new Product(requestDto);
+        return productRepository.save(product);
     }
 }

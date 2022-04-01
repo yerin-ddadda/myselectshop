@@ -30,4 +30,18 @@ public class Product extends Timestamped{
 
     @Column(nullable = false)
     private int myprice;
+
+    //관심 상품 관련된 정보를 물고오는
+    public Product(ProductRequestDto requestDto){
+        this.title = requestDto.getTitle();
+        this.link = requestDto.getLink();
+        this.image = requestDto.getImage();
+        this.lprice = requestDto.getLprice();
+        this.myprice = 0; //기본적으로 사용자가 설정한 가격이 가장 작게
+    }
+
+    public void update(ProductMypriceRequestDto requestDto){
+        this.myprice = requestDto.getMyprice();
+    }
+
 }
