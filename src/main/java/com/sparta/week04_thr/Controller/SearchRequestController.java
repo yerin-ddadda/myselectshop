@@ -16,7 +16,7 @@ public class SearchRequestController {
     private final NaverShopSearch naverShopSearch;
 
     @GetMapping("/api/search")
-    public List<ItemDto> getItems(@RequestParam String query) { //?뒤에 받고싶다면 RequestParam이라는 어노테이션 붙여줘야한다.
+    public List<ItemDto> getItems(@RequestParam String query) { //"?"뒤에 받고싶다면 RequestParam이라는 어노테이션 붙여줘야한다.
         String resultString = naverShopSearch.search(query);
         return naverShopSearch.fromJSONtoItems(resultString);
     }
