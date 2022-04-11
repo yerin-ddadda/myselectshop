@@ -3,14 +3,15 @@ package com.sparta.week04_thr.models;
 import lombok.Getter;
 import org.json.JSONObject;
 
+//setter는 생성자를 통해서 하기때문에
 @Getter
 public class ItemDto {
-    //내가 가져온 정보를 클라이언트에게 돌려주기
-    private String title;
     private String link;
     private String image;
+    private String title;
     private int lprice;
 
+    //생성자를 통해서 주입
     public ItemDto(JSONObject itemJson){
         this.title = itemJson.getString("title");
         this.image = itemJson.getString("image");
@@ -18,3 +19,4 @@ public class ItemDto {
         this.lprice = itemJson.getInt("lprice");
     }
 }
+

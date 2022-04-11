@@ -15,21 +15,24 @@ public class ProductService {
 
     private final ProductRepository productRepository;
 
-    @Transactional //DB관련 정보이다 + DB 정보를 업데이트 해줘야한다 -> 트랜젝션이 일어난다.
-    public Long update(Long id, ProductMypriceRequestDto requestDto){
+    //관심 가격 정보가 변경되었을때 id를 받아서 찾고 업데이트
+    @Transactional //db정보 업데이트
+    public Long update(Long id, ProductMypriceRequestDto requestDto){ //뭐를 업데이트하는지,어떤값을 update하는지
+
         Product product = productRepository.findById(id).orElseThrow(
-                () -> new NullPointerException("아이디가 존재하지 않습니다.")
+                () -> new NullPointerException("아이디가 잘못되었습니다.")
         );
         product.update(requestDto);
         return id;
     }
 
-    @Transactional //db가 업데이트 해야한다
+    @Transactional
     public Long updateBySearch(Long id, ItemDto itemDto){
         Product product = productRepository.findById(id).orElseThrow(
-                () -> new IllegalArgumentException("아이디가 존재하지 않습니다.")
+                () -> new IllegalArgumentException("아이디가 존재하지 않습니다")
         );
         product.updateByItemDto(itemDto);
         return id;
     }
+
 }

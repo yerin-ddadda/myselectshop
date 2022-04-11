@@ -31,13 +31,13 @@ public class Product extends Timestamped{
     @Column(nullable = false)
     private int myprice;
 
-    //관심 상품 관련된 정보를 물고오는
+    //관심상품등록하는 기능을 위해 관심상품 관련된 정보를 몰고오는 ProductRequestDto가 전달이 될것이고 그걸가지고 Product클래스를 만든다.
     public Product(ProductRequestDto requestDto){
         this.title = requestDto.getTitle();
         this.link = requestDto.getLink();
-        this.image = requestDto.getImage();
         this.lprice = requestDto.getLprice();
-        this.myprice = 0; //기본적으로 사용자가 설정한 가격이 가장 작게
+        this.image = requestDto.getImage();
+        this.myprice = 0;
     }
 
     public void update(ProductMypriceRequestDto requestDto){

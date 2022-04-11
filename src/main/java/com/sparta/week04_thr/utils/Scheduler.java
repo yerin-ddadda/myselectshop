@@ -18,6 +18,7 @@ public class Scheduler {
     private final ProductRepository productRepository;
     private final ProductService productService;
     private final NaverShopSearch naverShopSearch;
+    //이 세개들 잘 주입해 달라고 @RequiredArgsConstructor 작성
 
     // 초, 분, 시, 일, 월, 주 순서
     @Scheduled(cron = "0 0 1 * * *")
